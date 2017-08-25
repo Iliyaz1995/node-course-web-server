@@ -1,4 +1,4 @@
-const express = require('express');
+ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 const port = process.env.PORT || 3000;
@@ -23,6 +23,8 @@ hbs.registerHelper('currentYear',()=>{
   return new Date().getFullYear();
 })
 
+
+
 app.get('/', (req, res) =>{
   res.render('home.hbs',{
     pageName: 'this is home page'
@@ -40,6 +42,11 @@ app.get('/about', (req, res) =>{
     pageName: 'this is about page'
   })
 });
+app.get('/projects', (req,res)=>{
+  res.render('projects.hbs',{
+    pageName:"this is projects page"
+  })
+})
 
 app.listen(port,()=>{
   console.log(`the server is running on ${port}`);
